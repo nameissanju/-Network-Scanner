@@ -2953,286 +2953,552 @@ The modular architecture provides several advantages:
 
 The **Network Scanner** follows a well-structured and modular architecture that separates each reconnaissance task into dedicated components. From **host discovery** and **port scanning** to **DNS analysis**, **operating system detection**, **banner grabbing**, and **report generation**, every module has a clearly defined responsibility. Supporting directories such as **reports**, **logs**, **wordlists**, and **screenshots** keep generated data organized, while the centralized **scanner.py** entry point coordinates the complete scanning workflow. This design improves maintainability, scalability, and readability, making the project an excellent example of professional Python development, cybersecurity automation, and modern software engineering practices.
 
+# ⚙ Installation
 
+The **Network Scanner** is designed to be easy to install while providing a powerful and flexible network reconnaissance framework for cybersecurity professionals, penetration testers, students, and network administrators. Built primarily with **Python 3**, the framework integrates industry-standard networking libraries and **Nmap** to automate host discovery, port scanning, service enumeration, operating system detection, banner grabbing, DNS analysis, and report generation.
 
+The installation process requires only a few dependencies and can be completed within minutes on most Linux distributions. Once installed, the framework provides a command-line interface (CLI) that enables users to perform comprehensive network assessments using a single command.
 
+> **Recommended Platform:** Kali Linux, Ubuntu, Debian, or other Linux distributions with Python 3 and Nmap installed.
 
+---
 
+# 📋 System Requirements
 
+Before installing the project, ensure your system meets the following requirements.
 
+### Operating System
 
+* Kali Linux
+* Ubuntu
+* Debian
+* Parrot OS
+* Fedora
+* Arch Linux
 
+### Software Requirements
 
+* Python 3.10+
+* Git
+* Pip
+* Nmap
 
+Verify the installation:
 
+```bash
+python3 --version
+pip3 --version
+git --version
+nmap --version
+```
 
+---
 
+# 📥 Clone the Repository
 
+Clone the project from GitHub.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-to create a long theory of my readme
-
-
-
-
-
-
-⚙ Installation
-
-Clone repository
-
+```bash
 git clone https://github.com/yourusername/Network-Scanner.git
+```
 
-Move into project
+Or using SSH:
 
+```bash
+git clone git@github.com:yourusername/Network-Scanner.git
+```
+
+---
+
+# 📂 Navigate to the Project
+
+```bash
 cd Network-Scanner
+```
 
-Install dependencies
+Verify the project files.
 
+```bash
+ls
+```
+
+Detailed directory listing.
+
+```bash
+tree
+```
+
+---
+
+# 🐍 Create a Python Virtual Environment (Recommended)
+
+Create a virtual environment.
+
+```bash
+python3 -m venv venv
+```
+
+Activate it.
+
+```bash
+source venv/bin/activate
+```
+
+Upgrade pip.
+
+```bash
+pip install --upgrade pip
+```
+
+---
+
+# 📦 Install Python Dependencies
+
+Install all required packages.
+
+```bash
 pip install -r requirements.txt
+```
 
-Install Nmap
+Verify installed packages.
 
+```bash
+pip list
+```
+
+Show package information.
+
+```bash
+pip show scapy
+pip show python-nmap
+pip show requests
+```
+
+---
+
+# 🌐 Install Nmap
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
 sudo apt install nmap
-▶ Usage
+```
 
-Scan one host
+Fedora:
 
+```bash
+sudo dnf install nmap
+```
+
+Arch Linux:
+
+```bash
+sudo pacman -S nmap
+```
+
+Verify installation.
+
+```bash
+nmap --version
+```
+
+Locate Nmap.
+
+```bash
+which nmap
+```
+
+---
+
+# 🔒 Grant Execute Permission (Optional)
+
+```bash
+chmod +x scanner.py
+```
+
+Run directly.
+
+```bash
+./scanner.py --help
+```
+
+---
+
+# ✅ Verify the Installation
+
+Display help.
+
+```bash
+python3 scanner.py --help
+```
+
+Display version.
+
+```bash
+python3 scanner.py --version
+```
+
+Show available options.
+
+```bash
+python3 scanner.py -h
+```
+
+---
+
+# ▶ Usage
+
+The Network Scanner provides a flexible command-line interface capable of scanning individual hosts, subnets, custom ports, and generating detailed reports. The following examples demonstrate common usage scenarios.
+
+---
+
+# 🎯 Scan a Single Host
+
+```bash
+python3 scanner.py -t 192.168.1.10
+```
+
+or
+
+```bash
+python3 scanner.py --target 192.168.1.10
+```
+
+---
+
+# 🌍 Scan Multiple Hosts
+
+```bash
+python3 scanner.py -t 192.168.1.10,192.168.1.20
+```
+
+---
+
+# 🌐 Scan an Entire Subnet
+
+```bash
+python3 scanner.py -t 192.168.1.0/24
+```
+
+Scan a larger subnet.
+
+```bash
+python3 scanner.py -t 10.10.0.0/16
+```
+
+---
+
+# 🔓 Scan Specific Ports
+
+```bash
+python3 scanner.py -t 192.168.1.10 -p 22,80,443
+```
+
+Scan a custom range.
+
+```bash
+python3 scanner.py -t 192.168.1.10 -p 1-1000
+```
+
+Scan all ports.
+
+```bash
+python3 scanner.py -t 192.168.1.10 -p 1-65535
+```
+
+---
+
+# ⚡ Fast Scan
+
+```bash
+python3 scanner.py -t 192.168.1.10 --fast
+```
+
+---
+
+# 🔬 Full Scan
+
+```bash
+python3 scanner.py -t 192.168.1.10 --full
+```
+
+---
+
+# 🌍 Perform Host Discovery Only
+
+```bash
+python3 scanner.py -t 192.168.1.0/24 --discover
+```
+
+---
+
+# 🔎 Service Enumeration
+
+```bash
+python3 scanner.py -t 192.168.1.10 --services
+```
+
+---
+
+# 🖥 Operating System Detection
+
+```bash
+python3 scanner.py -t 192.168.1.10 --os
+```
+
+---
+
+# 🌐 DNS Lookup
+
+```bash
+python3 scanner.py -t example.com --dns
+```
+
+---
+
+# 🔍 Banner Grabbing
+
+```bash
+python3 scanner.py -t 192.168.1.10 --banner
+```
+
+---
+
+# 📊 Generate Reports
+
+```bash
+python3 scanner.py -t 192.168.1.10 --report
+```
+
+---
+
+# 💾 Save Reports to a Custom Directory
+
+```bash
+python3 scanner.py -t 192.168.1.0/24 -o reports/
+```
+
+Specify another location.
+
+```bash
+python3 scanner.py -t 192.168.1.0/24 -o output/
+```
+
+---
+
+# 📄 Export JSON Report
+
+```bash
+python3 scanner.py -t 192.168.1.10 --json
+```
+
+---
+
+# 📊 Export CSV Report
+
+```bash
+python3 scanner.py -t 192.168.1.10 --csv
+```
+
+---
+
+# 🌐 Export HTML Report
+
+```bash
+python3 scanner.py -t 192.168.1.10 --html
+```
+
+---
+
+# 📑 Export TXT Report
+
+```bash
+python3 scanner.py -t 192.168.1.10 --txt
+```
+
+---
+
+# 🧵 Specify Thread Count
+
+```bash
+python3 scanner.py -t 192.168.1.0/24 --threads 100
+```
+
+---
+
+# ⏱ Set Timeout
+
+```bash
+python3 scanner.py -t 192.168.1.10 --timeout 3
+```
+
+---
+
+# 📝 Enable Verbose Output
+
+```bash
+python3 scanner.py -t 192.168.1.10 --verbose
+```
+
+---
+
+# 🪵 Enable Logging
+
+```bash
+python3 scanner.py -t 192.168.1.10 --log
+```
+
+---
+
+# 🚫 Skip Banner Grabbing
+
+```bash
+python3 scanner.py -t 192.168.1.10 --no-banner
+```
+
+---
+
+# 🚫 Skip OS Detection
+
+```bash
+python3 scanner.py -t 192.168.1.10 --no-os
+```
+
+---
+
+# 🔄 Run Every Available Module
+
+```bash
+python3 scanner.py -t 192.168.1.0/24 --full
+```
+
+This performs:
+
+* Host Discovery
+* Port Scanning
+* Banner Grabbing
+* Service Enumeration
+* DNS Lookup
+* OS Detection
+* Report Generation
+* Scan Statistics
+
+---
+
+# 📂 Example Output Directory
+
+```text
+reports/
+├── report.txt
+├── report.json
+├── report.csv
+├── report.html
+├── hosts.txt
+├── open_ports.txt
+├── services.txt
+├── banners.txt
+├── dns_records.txt
+├── os_detection.txt
+├── statistics.txt
+└── scan.log
+```
+
+---
+
+# 🔄 Complete Scan Workflow
+
+```text
+User Input
+      │
+      ▼
+Validate Target
+      │
+      ▼
+Host Discovery
+      │
+      ▼
+Port Scanning
+      │
+      ▼
+Service Enumeration
+      │
+      ▼
+Banner Grabbing
+      │
+      ▼
+DNS Resolution
+      │
+      ▼
+Operating System Detection
+      │
+      ▼
+Collect Network Information
+      │
+      ▼
+Generate Reports
+      │
+      ▼
+Display Scan Statistics
+```
+
+---
+
+# 🚀 Example Commands
+
+```bash
+# Scan one host
 python3 scanner.py -t 192.168.1.10
 
-Scan an entire subnet
-
+# Scan subnet
 python3 scanner.py -t 192.168.1.0/24
 
-Scan custom ports
-
+# Scan specific ports
 python3 scanner.py -t 192.168.1.10 -p 22,80,443
 
-Save reports
+# Scan first 1000 ports
+python3 scanner.py -t 192.168.1.10 -p 1-1000
 
+# Full network scan
+python3 scanner.py -t 192.168.1.0/24 --full
+
+# Detect operating system
+python3 scanner.py -t 192.168.1.10 --os
+
+# Banner grabbing
+python3 scanner.py -t 192.168.1.10 --banner
+
+# DNS lookup
+python3 scanner.py -t example.com --dns
+
+# Save reports
 python3 scanner.py -t 192.168.1.0/24 -o reports/
-📊 Sample Workflow
+
+# Generate JSON report
+python3 scanner.py -t 192.168.1.10 --json
+
+# Generate HTML report
+python3 scanner.py -t 192.168.1.10 --html
+
+# Enable verbose output
+python3 scanner.py -t 192.168.1.10 --verbose
+```
+
+> **Note:** Include only the command-line options that are actually implemented in your project. If options such as `--full`, `--os`, `--banner`, or `--json` are not supported yet, either remove them from the README or implement them to match the documentation.
+
+# 📊 Sample Workflow
+
+The **Network Scanner** follows a structured and automated reconnaissance workflow that transforms a user-provided target into comprehensive security intelligence. Rather than requiring users to execute multiple networking tools manually, the framework orchestrates every stage of the scanning process through a unified pipeline. Each module performs a dedicated task, passes its results to the next stage, and contributes to a final report that summarizes the discovered network assets and services.
+
+This modular workflow ensures that reconnaissance is performed in a logical sequence, minimizing redundant operations while maximizing the amount of useful information collected. The process is suitable for **authorized penetration testing**, **network security assessments**, **asset inventory**, **cybersecurity research**, and **educational environments**.
+
+---
+
+# 🎯 Workflow Overview
+
+The Network Scanner processes targets through the following pipeline:
+
+```text
 Input Target
       │
       ▼
@@ -3255,26 +3521,696 @@ DNS Resolution
       │
       ▼
 Generate Report
-📈 Output
+```
 
-Generated reports include
+Each stage builds upon the information collected by the previous module, resulting in a complete picture of the target network.
 
-Active Hosts
-IP Addresses
-Hostnames
-MAC Addresses
-Vendor Information
-Open Ports
-Running Services
-Banner Information
-Operating System
-DNS Information
-JSON Reports
-HTML Reports
-CSV Reports
+---
 
-Example output structure:
+# 🖥 Step 1 — Input Target
 
+Every scan begins by specifying the target to be analyzed. The framework accepts different target formats, allowing users to scan individual systems, multiple hosts, or entire network ranges.
+
+Supported targets include:
+
+* Single IPv4 address
+* Multiple IP addresses
+* CIDR subnet ranges
+* Hostnames
+* Domain names
+
+Example commands:
+
+```bash
+python3 scanner.py -t 192.168.1.10
+
+python3 scanner.py -t 192.168.1.0/24
+
+python3 scanner.py -t example.com
+```
+
+Before the scan starts, the framework validates the target format to ensure that only properly formatted addresses or domains are processed.
+
+---
+
+# 🌍 Step 2 — Host Discovery
+
+Once the target has been validated, the framework begins **Host Discovery**.
+
+The objective of this stage is to determine which devices are active and reachable before deeper enumeration begins. Scanning inactive systems wastes time and resources, so the framework first identifies responsive hosts.
+
+Depending on the scan configuration, host discovery may use techniques such as:
+
+* ICMP Echo Requests
+* ARP Discovery
+* TCP Ping
+* UDP Ping
+* Network Reachability Checks
+
+Information collected includes:
+
+* Active Hosts
+* Reachable IP Addresses
+* Response Status
+* Network Availability
+* Response Time
+
+Only hosts confirmed as active continue to the next stage of the workflow.
+
+---
+
+# 🔓 Step 3 — Port Scan
+
+After identifying active systems, the framework performs **Port Scanning**.
+
+Open ports indicate which network services are accessible on the target and provide insight into the attack surface of the authorized environment.
+
+The scanner attempts to identify:
+
+* Open TCP Ports
+* Open UDP Ports
+* Closed Ports
+* Filtered Ports
+* Listening Services
+
+Example results:
+
+```text
+22   SSH
+80   HTTP
+443  HTTPS
+3306 MySQL
+```
+
+Port scanning establishes the foundation for service identification and further reconnaissance.
+
+---
+
+# 🔍 Step 4 — Banner Grabbing
+
+After detecting open ports, the framework connects to supported services and retrieves publicly available banners.
+
+Service banners often provide valuable information such as:
+
+* Server Software
+* Application Name
+* Software Version
+* Protocol Information
+* Welcome Messages
+* HTTP Headers
+
+Supported protocols include:
+
+* SSH
+* FTP
+* SMTP
+* HTTP
+* HTTPS
+* POP3
+* IMAP
+
+Example:
+
+```text
+SSH-2.0-OpenSSH_9.3
+
+Apache/2.4.58
+
+Postfix SMTP
+```
+
+This information enriches the reconnaissance process by identifying technologies running on discovered services.
+
+---
+
+# ⚙ Step 5 — Service Enumeration
+
+The Service Enumeration module analyzes open ports to determine which applications are actively listening and gathers additional details about each service.
+
+Typical information includes:
+
+* Service Name
+* Protocol
+* Version
+* Banner Information
+* SSL/TLS Availability
+* Application Details
+
+Examples of detected services:
+
+* SSH
+* HTTP
+* HTTPS
+* FTP
+* DNS
+* SMTP
+* SMB
+* RDP
+* MySQL
+* PostgreSQL
+
+The collected information provides a detailed inventory of applications operating on the target system.
+
+---
+
+# 💻 Step 6 — Operating System Detection
+
+After identifying running services, the framework attempts to determine the operating system of each host.
+
+Using network fingerprinting and service analysis, the scanner estimates the operating system family.
+
+Possible detections include:
+
+* Linux
+* Windows
+* macOS
+* Network Appliances
+* Embedded Devices
+
+The module records:
+
+* Operating System Family
+* Detection Confidence
+* Platform Information
+
+Operating system identification improves infrastructure documentation and helps classify network assets.
+
+---
+
+# 🌐 Step 7 — DNS Resolution
+
+The DNS Resolution module gathers domain-related information associated with discovered hosts.
+
+Collected information may include:
+
+* Hostnames
+* Reverse DNS Records
+* A Records
+* AAAA Records
+* MX Records
+* NS Records
+* CNAME Records
+* TXT Records
+* PTR Records
+
+Example:
+
+```text
+Hostname:
+server.example.com
+
+Reverse DNS:
+mail.example.com
+```
+
+DNS information provides additional context about the network infrastructure and complements host discovery and service enumeration.
+
+---
+
+# 📊 Step 8 — Generate Report
+
+The final stage of the workflow consolidates all collected information into comprehensive reports.
+
+Instead of presenting raw terminal output, the framework organizes results into structured documents suitable for review, documentation, and integration with other security tools.
+
+Supported report formats include:
+
+* TXT
+* JSON
+* CSV
+* HTML
+
+The generated reports may contain:
+
+* Host Discovery Results
+* Active Hosts
+* IP Addresses
+* MAC Addresses
+* Vendor Information
+* Open Ports
+* Running Services
+* Banner Information
+* Operating Systems
+* DNS Records
+* Network Statistics
+* Scan Summary
+
+Reports are automatically stored in the designated output directory for future analysis.
+
+---
+
+# 🔄 Detailed Workflow Diagram
+
+```text
+                    User Input
+                         │
+                         ▼
+                Validate Target
+                         │
+                         ▼
+                 Host Discovery
+                         │
+        ┌────────────────┴────────────────┐
+        ▼                                 ▼
+  Active Host                      Inactive Host
+        │                                 │
+        ▼                                 ▼
+   Continue Scan                     Skip Target
+        │
+        ▼
+     Port Scan
+        │
+        ▼
+   Banner Grabbing
+        │
+        ▼
+ Service Enumeration
+        │
+        ▼
+ Operating System Detection
+        │
+        ▼
+     DNS Resolution
+        │
+        ▼
+  Collect Scan Results
+        │
+        ▼
+ Generate TXT Report
+        │
+        ▼
+ Generate JSON Report
+        │
+        ▼
+ Generate CSV Report
+        │
+        ▼
+ Generate HTML Report
+        │
+        ▼
+ Display Scan Statistics
+```
+
+---
+
+# 📈 Data Flow Between Modules
+
+Each module contributes information to the next stage of the reconnaissance process.
+
+| Module              | Information Produced      |
+| ------------------- | ------------------------- |
+| Input Target        | Target IP, Domain, Subnet |
+| Host Discovery      | Active Hosts              |
+| Port Scan           | Open Ports                |
+| Banner Grabbing     | Server Banners            |
+| Service Enumeration | Running Services          |
+| OS Detection        | Operating System          |
+| DNS Resolution      | Hostnames & DNS Records   |
+| Report Generation   | Final Reports             |
+
+This sequential design ensures that each module operates only on verified information, improving both efficiency and accuracy.
+
+---
+
+# 🚀 Benefits of the Workflow
+
+The structured workflow provides several advantages:
+
+* Fully automated reconnaissance pipeline.
+* Eliminates repetitive manual scanning tasks.
+* Reduces overall assessment time.
+* Improves accuracy through modular processing.
+* Produces comprehensive and organized reports.
+* Supports scalable scanning of individual hosts or entire networks.
+* Simplifies cybersecurity assessments and asset discovery.
+* Enhances code maintainability through modular architecture.
+* Enables future expansion with additional scanning modules.
+* Demonstrates real-world cybersecurity automation practices.
+
+---
+
+# 📚 Summary
+
+The **Sample Workflow** illustrates how the **Network Scanner** transforms a simple target input into a complete reconnaissance report through a sequence of automated modules. Beginning with **target validation** and **host discovery**, the framework progresses through **port scanning**, **banner grabbing**, **service enumeration**, **operating system detection**, and **DNS resolution** before consolidating all findings into professional reports. This structured pipeline minimizes manual effort, improves scanning efficiency, and provides comprehensive visibility into authorized network environments, making the project a practical demonstration of modern cybersecurity automation and professional network reconnaissance techniques.
+
+# 📈 Output
+
+The **Output** module is the final stage of the **Network Scanner** and serves as the centralized repository for all information collected during the reconnaissance process. After completing host discovery, port scanning, service enumeration, banner grabbing, operating system detection, DNS resolution, and network information gathering, the framework automatically organizes the collected data into structured reports.
+
+Rather than displaying only temporary terminal output, the scanner stores every important finding in dedicated report files that can be reviewed, archived, shared, or integrated into other cybersecurity workflows. This organized reporting approach allows users to revisit previous scan results, compare multiple assessments, and maintain comprehensive documentation of authorized network environments.
+
+The reporting system has been designed to support both human-readable documentation and machine-readable data formats, making the framework suitable for individual researchers, security teams, and automated security pipelines.
+
+---
+
+# 🎯 Purpose of the Output Module
+
+The primary objective of the Output module is to preserve all reconnaissance findings in a structured and reusable format.
+
+The generated reports help users:
+
+* Document discovered network assets.
+* Review scan results efficiently.
+* Maintain infrastructure inventories.
+* Archive penetration testing results.
+* Share findings with team members.
+* Integrate data into automation workflows.
+* Support security audits and compliance.
+* Create professional assessment reports.
+
+By automatically organizing scan results, the framework eliminates the need for manual note-taking and significantly improves the efficiency of network reconnaissance.
+
+---
+
+# 📂 Generated Reports
+
+The Network Scanner creates multiple report files, each containing information collected during a specific phase of the reconnaissance process.
+
+Generated reports include:
+
+* Active Hosts
+* IP Addresses
+* Hostnames
+* MAC Addresses
+* Vendor Information
+* Open Ports
+* Running Services
+* Banner Information
+* Operating System Detection
+* DNS Information
+* JSON Reports
+* HTML Reports
+* CSV Reports
+
+Each report focuses on a particular aspect of the scan while collectively providing a complete overview of the target environment.
+
+---
+
+# 🌐 Active Hosts Report
+
+The **Active Hosts** report lists every responsive device discovered during host discovery.
+
+Information typically includes:
+
+* IP Address
+* Host Status
+* Response Time
+* Discovery Method
+* Scan Timestamp
+
+Example:
+
+```text id="b6kh4m"
+192.168.1.10
+192.168.1.20
+192.168.1.45
+192.168.1.100
+```
+
+This report serves as the foundation for all subsequent reconnaissance activities.
+
+---
+
+# 🌍 IP Address Report
+
+The IP Address report records every discovered network address processed during the scan.
+
+Information may include:
+
+* IPv4 Address
+* IPv6 Address
+* Network Range
+* Host Classification
+
+This report simplifies infrastructure documentation and asset management.
+
+---
+
+# 🖥 Hostname Report
+
+Whenever hostname information is available, the framework automatically records it.
+
+Example:
+
+```text id="l7mpzn"
+192.168.1.10
+Hostname:
+webserver01.local
+
+192.168.1.15
+Hostname:
+database01.local
+```
+
+Hostnames improve readability and simplify system identification.
+
+---
+
+# 🖧 MAC Address Report
+
+For hosts discovered on the local network, the scanner records hardware addresses.
+
+Example:
+
+```text id="hrngto"
+MAC Address:
+00:1A:2B:3C:4D:5E
+```
+
+MAC addresses assist with:
+
+* Device Identification
+* Asset Inventory
+* Internal Network Documentation
+
+---
+
+# 🏢 Vendor Information
+
+Using the Organizationally Unique Identifier (OUI) portion of the MAC address, the framework attempts to identify the hardware manufacturer.
+
+Examples include:
+
+* Cisco Systems
+* Dell Technologies
+* Hewlett Packard Enterprise
+* Intel Corporation
+* Apple
+* Lenovo
+* MikroTik
+* VMware
+
+Vendor identification provides additional context about the discovered infrastructure.
+
+---
+
+# 🔓 Open Ports Report
+
+The Port Report records every accessible port discovered during scanning.
+
+Example:
+
+```text id="p5zdug"
+22
+80
+443
+3306
+8080
+```
+
+Additional information may include:
+
+* Port Number
+* Protocol
+* State
+* Service
+
+The report provides a clear overview of the exposed network surface.
+
+---
+
+# ⚙ Running Services Report
+
+The Service Report identifies applications listening on open ports.
+
+Typical entries include:
+
+* SSH
+* HTTP
+* HTTPS
+* FTP
+* SMTP
+* DNS
+* SMB
+* RDP
+* MySQL
+* PostgreSQL
+
+Example:
+
+```text id="o1h18d"
+22  SSH
+80  HTTP
+443 HTTPS
+```
+
+Service identification enhances infrastructure visibility and complements port scanning results.
+
+---
+
+# 🔍 Banner Information Report
+
+The Banner Report stores identifying information collected from network services.
+
+Example:
+
+```text id="ymn1xv"
+SSH-2.0-OpenSSH_9.3
+
+Apache/2.4.58
+
+Postfix SMTP
+```
+
+Banner information may include:
+
+* Software Name
+* Version
+* Welcome Message
+* Server Header
+* Protocol Information
+
+This report provides additional context for service enumeration.
+
+---
+
+# 💻 Operating System Report
+
+The Operating System report summarizes the detected platform for each discovered host.
+
+Example:
+
+```text id="dd18s8"
+192.168.1.10
+Linux
+
+192.168.1.20
+Windows
+
+192.168.1.30
+Network Device
+```
+
+Operating system information helps classify devices and document network infrastructure.
+
+---
+
+# 🌐 DNS Information Report
+
+The DNS report contains all domain-related information collected during scanning.
+
+Possible entries include:
+
+* Hostname
+* Reverse DNS
+* A Records
+* AAAA Records
+* MX Records
+* NS Records
+* TXT Records
+* PTR Records
+
+Example:
+
+```text id="hmncvp"
+Hostname:
+server.example.com
+
+A Record:
+93.184.216.34
+
+MX Record:
+mail.example.com
+```
+
+This information supports domain analysis and infrastructure mapping.
+
+---
+
+# 📄 JSON Report
+
+The framework exports machine-readable reports using **JSON**, making the results suitable for automation and integration.
+
+Example:
+
+```json id="t4u6u8"
+{
+  "host": "192.168.1.10",
+  "ports": [22, 80, 443],
+  "services": [
+    "SSH",
+    "HTTP",
+    "HTTPS"
+  ],
+  "os": "Linux"
+}
+```
+
+JSON reports are ideal for:
+
+* Security Automation
+* API Integration
+* SIEM Platforms
+* Custom Scripts
+
+---
+
+# 📊 CSV Report
+
+CSV reports are optimized for spreadsheet applications.
+
+Supported software includes:
+
+* Microsoft Excel
+* Google Sheets
+* LibreOffice Calc
+
+Typical columns:
+
+* IP Address
+* Hostname
+* Port
+* Service
+* Version
+* Operating System
+
+CSV reports simplify sorting, filtering, and large-scale data analysis.
+
+---
+
+# 🌐 HTML Report
+
+The HTML report provides a professional, browser-friendly summary of the scan.
+
+Typical sections include:
+
+* Executive Summary
+* Host Inventory
+* Open Port Tables
+* Service Enumeration
+* DNS Analysis
+* Operating System Detection
+* Scan Statistics
+
+HTML reports are ideal for presentations, client deliverables, and internal documentation.
+
+---
+
+# 📁 Output Directory Structure
+
+After the scan is complete, the framework automatically creates an organized output directory.
+
+```text id="xzbdfq"
 reports/
 │
 ├── hosts.txt
@@ -3284,52 +4220,1065 @@ reports/
 ├── dns.txt
 ├── report.json
 ├── report.csv
-└── report.html
-🎯 Use Cases
-Network Security Audits
-Internal Network Enumeration
-Penetration Testing
-Vulnerability Assessments
-Asset Inventory
-Security Research
-Red Team Operations
-Blue Team Validation
-Cybersecurity Education
-CTF Practice Labs
-🔒 Disclaimer
+├── report.html
+└── scan_summary.txt
+```
 
-This project is intended solely for educational purposes and authorized security testing. Use it only on networks and systems that you own or have explicit permission to assess. Unauthorized scanning of third-party systems may violate laws, regulations, or organizational policies. The author assumes no responsibility for misuse of this software.
+Each file contains a specific category of reconnaissance data, making it easy to locate and analyze information without searching through large log files.
 
-🚀 Future Enhancements
-Multi-threaded Scanning
-IPv6 Support
-SNMP Enumeration
-SMB Enumeration
-LDAP Enumeration
-Web Technology Detection
-Vulnerability Detection (safe checks)
-PDF Report Generation
-Interactive Dashboard
-Docker Support
-REST API
-Real-time Scan Progress
-Export to SIEM Platforms
-Email Notifications
-💼 Resume Skills Demonstrated
+---
 
-This project showcases practical experience in:
+# 🔄 Output Generation Workflow
 
-Python Programming
-Socket Programming
-Network Security
-TCP/IP Networking
-Service Enumeration
-DNS Analysis
+The reporting engine collects results from every scanning module before generating the final reports.
+
+```text id="spdk0s"
+Host Discovery
+        │
+        ▼
+Port Scanning
+        │
+        ▼
 Banner Grabbing
-Multithreading
-Security Automation
-Report Generation
-Linux Administration
-Cybersecurity Tool Development
+        │
+        ▼
+Service Enumeration
+        │
+        ▼
+Operating System Detection
+        │
+        ▼
+DNS Resolution
+        │
+        ▼
+Collect Results
+        │
+        ▼
+Generate TXT Reports
+        │
+        ▼
+Generate JSON Report
+        │
+        ▼
+Generate CSV Report
+        │
+        ▼
+Generate HTML Report
+        │
+        ▼
+Save Reports
+```
 
-This project is well-suited for a cybersecurity portfolio and demonstrates skills relevant to roles such as Penetration Tester, SOC Analyst, Security Engineer, Network Security Engineer, and Cybersecurity Analyst.
+This automated workflow ensures consistency across all report formats and guarantees that no collected information is lost.
+
+---
+
+# 🚀 Benefits of the Output Module
+
+The reporting system provides numerous advantages:
+
+* Automatically organizes reconnaissance findings.
+* Eliminates manual documentation.
+* Supports multiple output formats.
+* Improves collaboration among security teams.
+* Facilitates long-term storage of assessment data.
+* Enables integration with external tools and dashboards.
+* Simplifies analysis of large networks.
+* Produces professional documentation for authorized security assessments.
+* Supports automation and custom workflows.
+* Enhances the overall usability of the Network Scanner.
+
+---
+
+# 📚 Summary
+
+The **Output** module transforms raw reconnaissance data into comprehensive, well-structured reports that are easy to analyze, archive, and share. By automatically generating dedicated files for **active hosts**, **IP addresses**, **hostnames**, **MAC addresses**, **vendor information**, **open ports**, **running services**, **banner information**, **operating system detection**, and **DNS records**, along with **JSON**, **CSV**, and **HTML** reports, the Network Scanner delivers professional-grade documentation suitable for cybersecurity assessments, network administration, research, and educational purposes. Its organized reporting system demonstrates modern software engineering practices while showcasing practical expertise in cybersecurity automation, data management, and professional network reconnaissance.
+
+# 🎯 Use Cases
+
+The **Network Scanner** is designed to support a wide range of cybersecurity, network administration, and educational activities. Its modular architecture and automated reconnaissance capabilities make it suitable for professionals, researchers, students, and organizations that need an efficient method for discovering, analyzing, and documenting network assets.
+
+By combining host discovery, port scanning, service enumeration, operating system detection, DNS resolution, banner grabbing, and comprehensive report generation, the framework provides valuable insights into network environments while reducing the time and effort required for manual reconnaissance.
+
+The following are some of the primary use cases for the Network Scanner.
+
+---
+
+# 🛡 Network Security Audits
+
+One of the primary purposes of the Network Scanner is to assist organizations in conducting **network security audits**.
+
+During an audit, understanding which systems are active and what services they expose is essential for evaluating the organization's security posture.
+
+The framework helps security teams by:
+
+* Discovering active network devices.
+* Identifying exposed network services.
+* Detecting unnecessary open ports.
+* Documenting operating systems.
+* Collecting DNS information.
+* Recording service banners.
+* Producing organized audit reports.
+
+These reports can be used to verify network configurations, identify security weaknesses, and support compliance requirements.
+
+---
+
+# 🌐 Internal Network Enumeration
+
+Understanding an internal network is often the first step of any authorized security assessment.
+
+The Network Scanner automates this process by identifying:
+
+* Active Hosts
+* IP Addresses
+* Hostnames
+* MAC Addresses
+* Network Vendors
+* Running Services
+* Open Ports
+
+This information provides administrators with a comprehensive inventory of devices connected to the network and helps identify unmanaged or unauthorized assets.
+
+---
+
+# 🔐 Penetration Testing
+
+Reconnaissance is a critical phase of every penetration test.
+
+Instead of manually executing multiple scanning tools, the Network Scanner automates the information-gathering process, allowing security professionals to focus on analyzing results rather than collecting them.
+
+Typical penetration testing activities supported by the framework include:
+
+* Target Discovery
+* Port Enumeration
+* Service Identification
+* Operating System Fingerprinting
+* Banner Collection
+* DNS Enumeration
+* Infrastructure Documentation
+
+The generated reports serve as valuable documentation throughout the engagement.
+
+---
+
+# 🚨 Vulnerability Assessments
+
+Although the Network Scanner is not a vulnerability scanner, it provides the foundational information required before vulnerability analysis begins.
+
+The framework assists vulnerability assessments by identifying:
+
+* Accessible Services
+* Software Versions
+* Network Exposure
+* Operating Systems
+* Service Banners
+* Internet-Facing Assets
+
+This information enables security teams to prioritize systems for further testing using dedicated vulnerability assessment tools.
+
+---
+
+# 🖥 Asset Inventory
+
+Maintaining an accurate inventory of network-connected devices is essential for effective cybersecurity and IT management.
+
+The Network Scanner simplifies asset inventory by automatically collecting information such as:
+
+* IP Addresses
+* Hostnames
+* Hardware Vendors
+* Operating Systems
+* Running Services
+* Network Protocols
+
+The generated reports can serve as a baseline for infrastructure documentation and future comparisons.
+
+---
+
+# 🔬 Security Research
+
+Researchers often require reliable reconnaissance tools for studying network protocols, analyzing service configurations, and understanding infrastructure behavior.
+
+The Network Scanner provides structured data that can support:
+
+* Network Analysis
+* Protocol Research
+* Service Fingerprinting
+* Infrastructure Mapping
+* Traffic Observation
+* Automation Experiments
+
+Its modular design also allows researchers to extend the framework with additional reconnaissance techniques.
+
+---
+
+# 🔴 Red Team Operations
+
+During authorized Red Team engagements, rapid and accurate reconnaissance is essential.
+
+The Network Scanner helps Red Team operators by automating repetitive discovery tasks and providing detailed information about the target environment.
+
+Capabilities beneficial to Red Team activities include:
+
+* Host Discovery
+* Service Enumeration
+* Banner Grabbing
+* Operating System Detection
+* DNS Resolution
+* Network Mapping
+
+Automated reconnaissance reduces preparation time and allows operators to focus on higher-level assessment objectives.
+
+---
+
+# 🔵 Blue Team Validation
+
+Defensive security teams can use the framework to validate their organization's security posture from the perspective of an internal network assessment.
+
+The scanner enables Blue Teams to verify:
+
+* Which systems are visible.
+* Which services are exposed.
+* Whether unnecessary ports remain open.
+* DNS configuration accuracy.
+* Network documentation completeness.
+
+Regular scanning helps identify configuration changes and supports continuous security monitoring.
+
+---
+
+# 🎓 Cybersecurity Education
+
+The Network Scanner serves as an excellent educational project for students learning cybersecurity, ethical hacking, networking, and Python development.
+
+Students can gain practical experience with:
+
+* Network Reconnaissance
+* Python Programming
+* Socket Programming
+* Scapy
+* Nmap Integration
+* Automation
+* Report Generation
+* Software Architecture
+
+Because each component is implemented as an independent module, learners can study and modify individual parts without affecting the entire application.
+
+---
+
+# 🏁 CTF Practice Labs
+
+Capture The Flag (CTF) environments frequently require participants to perform reconnaissance before attempting exploitation.
+
+The Network Scanner can assist in authorized CTF labs by:
+
+* Discovering active hosts.
+* Enumerating services.
+* Identifying open ports.
+* Collecting banners.
+* Resolving hostnames.
+* Mapping laboratory networks.
+
+Using an automated framework allows participants to spend more time solving challenges rather than performing repetitive enumeration tasks.
+
+---
+
+# 📊 Typical Workflow Across Use Cases
+
+```text
+Target Selection
+        │
+        ▼
+Host Discovery
+        │
+        ▼
+Port Scanning
+        │
+        ▼
+Service Enumeration
+        │
+        ▼
+Banner Collection
+        │
+        ▼
+Operating System Detection
+        │
+        ▼
+DNS Resolution
+        │
+        ▼
+Generate Reports
+        │
+        ▼
+Review & Analysis
+```
+
+This workflow demonstrates how the Network Scanner supports multiple security scenarios while maintaining a consistent and repeatable reconnaissance process.
+
+---
+
+# 🚀 Benefits Across Different Environments
+
+The framework offers several advantages regardless of the deployment scenario:
+
+* Automates repetitive reconnaissance tasks.
+* Produces structured and reusable reports.
+* Improves visibility into network infrastructure.
+* Supports documentation and compliance activities.
+* Reduces manual effort during assessments.
+* Provides a modular architecture for future enhancements.
+* Demonstrates practical cybersecurity automation skills.
+* Simplifies learning through organized source code.
+* Scales from small laboratory networks to larger enterprise environments.
+* Encourages repeatable and consistent reconnaissance workflows.
+
+---
+
+# 🔒 Disclaimer
+
+The **Network Scanner** has been developed as an educational and professional learning project to demonstrate concepts related to **network reconnaissance**, **security automation**, **service enumeration**, and **Python-based cybersecurity tooling**.
+
+This software is intended **solely for educational purposes, research, laboratory environments, and authorized security assessments**. It should only be used on systems, networks, applications, or infrastructure that you own or for which you have received **explicit written permission** from the system owner or organization responsible for the environment.
+
+Unauthorized scanning, enumeration, or testing of third-party systems may violate:
+
+* Local laws and regulations.
+* Computer misuse legislation.
+* Organizational security policies.
+* Acceptable use agreements.
+* Service provider terms and conditions.
+
+Users are solely responsible for ensuring that all activities performed with this software comply with applicable legal, ethical, and organizational requirements.
+
+The author does **not** encourage, support, or condone the use of this project for unauthorized access, malicious activities, disruption of services, or any action intended to compromise the confidentiality, integrity, or availability of systems belonging to others.
+
+By downloading, installing, or using this software, you acknowledge that:
+
+* You understand the legal implications of network scanning.
+* You will use the framework responsibly and ethically.
+* You possess appropriate authorization before scanning any target.
+* You accept full responsibility for your actions and any consequences arising from the use or misuse of this software.
+
+The author, contributors, and repository maintainers assume **no liability** for any direct or indirect damages, data loss, legal consequences, service disruptions, or other issues resulting from the use or misuse of this project.
+
+Always practice **responsible disclosure**, respect the privacy and security of others, and conduct security testing only within environments where you have clear authorization.
+
+---
+
+# 📚 Summary
+
+The **Network Scanner** is a versatile reconnaissance framework that supports a broad range of legitimate cybersecurity activities, including **network security audits**, **internal network enumeration**, **penetration testing**, **vulnerability assessments**, **asset inventory**, **security research**, **Red Team operations**, **Blue Team validation**, **cybersecurity education**, and **CTF practice labs**. Its modular architecture, automated scanning workflow, and comprehensive reporting capabilities make it suitable for both learning and professional use. At the same time, the project emphasizes ethical and responsible use, reminding users that all scanning activities must be performed only with proper authorization and in compliance with applicable laws, regulations, and organizational policies.
+
+# 🚀 Future Enhancements
+
+The **Network Scanner** has been designed with a modular and extensible architecture, allowing new capabilities to be integrated without requiring major changes to the existing codebase. While the current version focuses on automated network reconnaissance, future releases aim to transform the project into a comprehensive network assessment and security automation platform.
+
+The planned enhancements focus on improving scanning performance, expanding protocol support, enhancing reporting capabilities, strengthening automation, and providing deeper visibility into network infrastructure. These features are intended to make the framework more useful for cybersecurity professionals, penetration testers, security researchers, network administrators, and students.
+
+Below are the major features planned for future development.
+
+---
+
+# ⚡ Multi-threaded Scanning
+
+Future versions will introduce an optimized **multi-threaded scanning engine** capable of performing thousands of concurrent network operations.
+
+Instead of scanning hosts sequentially, multiple targets will be processed simultaneously, significantly reducing the overall scan duration.
+
+### Planned capabilities
+
+* High-speed host discovery
+* Concurrent port scanning
+* Parallel service detection
+* Faster banner grabbing
+* Optimized resource management
+* Configurable thread limits
+* Improved scalability
+* Better performance on enterprise networks
+
+### Benefits
+
+* Reduced scan time
+* Efficient CPU utilization
+* Faster reconnaissance
+* Improved large-scale assessments
+
+---
+
+# 🌍 IPv6 Support
+
+Current scanning primarily focuses on IPv4 environments. Future releases will extend compatibility to **IPv6 networks**.
+
+Planned functionality includes:
+
+* IPv6 Host Discovery
+* IPv6 Port Scanning
+* IPv6 DNS Resolution
+* IPv6 Service Enumeration
+* IPv6 Operating System Detection
+* Dual Stack Network Support
+
+This enhancement will ensure compatibility with modern enterprise infrastructures that increasingly rely on IPv6.
+
+---
+
+# 📡 SNMP Enumeration
+
+Support for **Simple Network Management Protocol (SNMP)** enumeration will allow the scanner to gather valuable information from network devices.
+
+Possible information collected:
+
+* Device Name
+* Network Interfaces
+* Routing Tables
+* System Uptime
+* Hardware Information
+* Network Statistics
+* Installed Services
+* Device Configuration Details
+
+Supported devices may include:
+
+* Routers
+* Switches
+* Firewalls
+* Printers
+* Wireless Controllers
+* IoT Devices
+
+---
+
+# 🖥 SMB Enumeration
+
+Future versions will include **Server Message Block (SMB)** enumeration for Windows environments.
+
+Potential features:
+
+* Shared Folder Discovery
+* SMB Version Detection
+* Domain Information
+* User Enumeration
+* Hostname Collection
+* Network Shares
+* Authentication Status
+* Security Configuration Analysis
+
+This functionality will improve visibility into Windows-based enterprise networks.
+
+---
+
+# 🏢 LDAP Enumeration
+
+Support for **Lightweight Directory Access Protocol (LDAP)** will provide Active Directory reconnaissance capabilities in authorized environments.
+
+Possible information gathered:
+
+* Domain Names
+* Organizational Units
+* User Accounts
+* Groups
+* Computer Objects
+* Domain Controllers
+* LDAP Configuration
+* Forest Information
+
+LDAP enumeration will enhance infrastructure mapping during authorized internal security assessments.
+
+---
+
+# 🌐 Web Technology Detection
+
+A dedicated **Web Technology Detection** module is planned to identify technologies powering web applications.
+
+Potential detections include:
+
+* Web Servers
+* Programming Languages
+* Frameworks
+* Content Management Systems
+* Reverse Proxies
+* JavaScript Libraries
+* CDN Providers
+* SSL/TLS Information
+
+Example technologies:
+
+* Apache
+* Nginx
+* IIS
+* PHP
+* Node.js
+* Django
+* Flask
+* Laravel
+* React
+* Angular
+* WordPress
+
+This feature will provide a deeper understanding of exposed web services.
+
+---
+
+# 🛡 Vulnerability Detection (Safe Checks)
+
+Future versions may introduce **non-intrusive vulnerability detection** focused on identifying potential security issues without exploiting them.
+
+Planned safe checks include:
+
+* Outdated Service Versions
+* Weak SSL/TLS Configurations
+* Anonymous FTP Access
+* Insecure HTTP Headers
+* Default Service Configurations
+* Missing Security Headers
+* Deprecated Protocols
+* Weak Cipher Suites
+
+The framework will emphasize safe, read-only checks designed to support authorized security assessments.
+
+---
+
+# 📄 PDF Report Generation
+
+The reporting engine will be expanded to generate professional **PDF reports** suitable for documentation and presentations.
+
+Planned report sections:
+
+* Executive Summary
+* Scan Overview
+* Host Inventory
+* Port Analysis
+* Service Enumeration
+* Operating System Detection
+* DNS Information
+* Network Statistics
+* Recommendations
+* Appendix
+
+PDF reports will improve usability for security consultants and organizational reporting.
+
+---
+
+# 📊 Interactive Dashboard
+
+A web-based dashboard is planned to provide an interactive visualization of scan results.
+
+Potential dashboard features:
+
+* Live Scan Status
+* Host Inventory
+* Port Distribution Charts
+* Service Statistics
+* Search and Filtering
+* Report Downloads
+* Historical Scans
+* Network Visualization
+
+This interface will improve usability and make large-scale scan results easier to analyze.
+
+---
+
+# 🐳 Docker Support
+
+Future releases will include official **Docker** support to simplify deployment across different environments.
+
+Planned features:
+
+* Dockerfile
+* Docker Compose
+* Containerized Execution
+* Portable Deployment
+* Consistent Runtime Environment
+* Easy Updates
+
+Containerization will allow users to deploy the scanner quickly without manually installing dependencies.
+
+---
+
+# 🔌 REST API
+
+A RESTful API is planned to enable programmatic access to the scanner.
+
+Possible endpoints:
+
+* Start Scan
+* Stop Scan
+* Retrieve Results
+* Export Reports
+* Scan Status
+* Host Information
+* Port Information
+* Historical Results
+
+This API will allow seamless integration with external security platforms and automation pipelines.
+
+---
+
+# 📈 Real-time Scan Progress
+
+Future versions will include real-time progress monitoring.
+
+Potential capabilities:
+
+* Live Progress Bar
+* Hosts Scanned
+* Active Threads
+* Current Module
+* Remaining Targets
+* Estimated Completion Time
+* Scan Speed
+* Runtime Statistics
+
+This enhancement will improve the user experience during long-running assessments.
+
+---
+
+# 🔗 Export to SIEM Platforms
+
+Integration with **Security Information and Event Management (SIEM)** solutions is planned to support enterprise security operations.
+
+Potential integrations:
+
+* Splunk
+* Elastic Security
+* IBM QRadar
+* Microsoft Sentinel
+* Graylog
+* Wazuh
+
+Supported export formats may include:
+
+* JSON
+* Syslog
+* CEF
+* CSV
+* API Integration
+
+This functionality will enable centralized analysis and long-term storage of reconnaissance data.
+
+---
+
+# 📧 Email Notifications
+
+The framework is planned to support automated email notifications once scans have completed.
+
+Possible features:
+
+* Scan Completion Alerts
+* Error Notifications
+* Scheduled Reports
+* PDF Attachments
+* HTML Reports
+* Summary Emails
+* Custom SMTP Configuration
+
+Email notifications will help users monitor long-running scans without continuously checking the terminal.
+
+---
+
+# 🛣 Development Roadmap
+
+```text
+Current Version
+        │
+        ▼
+Performance Improvements
+        │
+        ▼
+Multi-threaded Scanning
+        │
+        ▼
+IPv6 Support
+        │
+        ▼
+Protocol Enumeration
+(SNMP • SMB • LDAP)
+        │
+        ▼
+Web Technology Detection
+        │
+        ▼
+Safe Vulnerability Checks
+        │
+        ▼
+Advanced Reporting
+(PDF • HTML • JSON)
+        │
+        ▼
+Interactive Dashboard
+        │
+        ▼
+Docker Deployment
+        │
+        ▼
+REST API
+        │
+        ▼
+SIEM Integration
+        │
+        ▼
+Email Notifications
+```
+
+---
+
+# 🎯 Long-Term Vision
+
+The long-term objective of the **Network Scanner** is to evolve from a reconnaissance utility into a complete network security assessment framework capable of supporting modern cybersecurity workflows.
+
+Future versions aim to provide:
+
+* Faster and more efficient scanning engines.
+* Broader protocol support.
+* Enterprise-ready reporting.
+* Advanced automation features.
+* Cloud-native deployment options.
+* Integration with security ecosystems.
+* Improved scalability for large infrastructures.
+* Enhanced user experience through dashboards and APIs.
+
+By continuously expanding its capabilities while maintaining a modular architecture, the project seeks to become a practical learning platform as well as a valuable tool for authorized security assessments and network management.
+
+---
+
+# 📚 Summary
+
+The planned enhancements demonstrate a clear roadmap for the continued evolution of the **Network Scanner**. Future releases will introduce **multi-threaded scanning**, **IPv6 support**, **SNMP**, **SMB**, and **LDAP enumeration**, **web technology detection**, **safe vulnerability checks**, **PDF reporting**, an **interactive dashboard**, **Docker deployment**, a **REST API**, **real-time progress monitoring**, **SIEM integration**, and **email notifications**. Together, these improvements will increase performance, expand protocol coverage, strengthen reporting capabilities, and enhance automation, making the project a more powerful, scalable, and professional cybersecurity reconnaissance framework.
+
+# 💼 Resume Skills Demonstrated
+
+The **Network Scanner** project demonstrates a broad range of technical competencies spanning **cybersecurity**, **network engineering**, **Python software development**, and **security automation**. It showcases the ability to design, develop, and maintain a modular cybersecurity tool capable of automating complex network reconnaissance tasks while producing structured, professional reports.
+
+From a resume and portfolio perspective, this project reflects practical, hands-on experience with technologies, methodologies, and development practices commonly used in professional cybersecurity environments. Rather than being a simple scripting exercise, the project illustrates the complete software development lifecycle—from planning and architecture to implementation, testing, documentation, and reporting.
+
+The modular design, automation capabilities, command-line interface, and reporting engine demonstrate an understanding of both secure software engineering principles and modern network reconnaissance techniques.
+
+---
+
+# 🐍 Python Programming
+
+The project showcases strong proficiency in **Python 3**, demonstrating the ability to build scalable and maintainable cybersecurity applications.
+
+Skills demonstrated include:
+
+* Object-Oriented Programming (OOP)
+* Modular Software Design
+* Function Development
+* Exception Handling
+* File Operations
+* Data Processing
+* Command-Line Interface (CLI) Development
+* Logging and Debugging
+* Configuration Management
+* Package Management
+
+The implementation reflects best practices for writing clean, reusable, and extensible Python code.
+
+---
+
+# 🔌 Socket Programming
+
+The Network Scanner makes extensive use of Python's socket programming capabilities to establish direct communication with remote hosts and services.
+
+Technical concepts demonstrated include:
+
+* TCP Socket Communication
+* UDP Communication
+* Client-Server Interaction
+* Port Connectivity Testing
+* Network Timeouts
+* Banner Retrieval
+* Protocol Communication
+* Connection Management
+
+This showcases a practical understanding of low-level networking concepts used in many cybersecurity tools.
+
+---
+
+# 🌐 Network Security
+
+The project demonstrates practical knowledge of network security fundamentals by implementing automated reconnaissance techniques that help identify and document exposed network services in authorized environments.
+
+Core competencies include:
+
+* Network Reconnaissance
+* Host Discovery
+* Attack Surface Mapping
+* Exposure Analysis
+* Security Assessment Preparation
+* Infrastructure Visibility
+* Asset Identification
+
+These capabilities form the foundation of many defensive and offensive security workflows.
+
+---
+
+# 📡 TCP/IP Networking
+
+The scanner applies core TCP/IP networking principles throughout its reconnaissance workflow.
+
+Demonstrated knowledge includes:
+
+* IPv4 Addressing
+* CIDR Notation
+* TCP Protocol
+* UDP Protocol
+* ICMP Communication
+* ARP Discovery
+* DNS Resolution
+* Routing Concepts
+* Network Services
+* Port-Based Communication
+
+Understanding these networking concepts is essential for cybersecurity professionals and network engineers.
+
+---
+
+# 🔍 Service Enumeration
+
+Service enumeration is a critical component of network reconnaissance, and the project automates the process of identifying accessible services running on discovered hosts.
+
+Skills demonstrated include:
+
+* Service Identification
+* Version Detection
+* Protocol Recognition
+* Service Classification
+* Port-to-Service Mapping
+* Network Service Analysis
+
+The implementation highlights the ability to gather actionable intelligence during authorized assessments.
+
+---
+
+# 🌐 DNS Analysis
+
+The project includes automated DNS resolution and domain information gathering to improve visibility into network infrastructure.
+
+Capabilities demonstrated:
+
+* Hostname Resolution
+* Reverse DNS Lookup
+* DNS Record Collection
+* Domain Analysis
+* Infrastructure Mapping
+* Name Resolution
+
+These features support both network administration and security assessment activities.
+
+---
+
+# 📋 Banner Grabbing
+
+The scanner retrieves publicly available banners from exposed services to identify software and service details.
+
+Skills demonstrated:
+
+* Banner Collection
+* Protocol Identification
+* Service Fingerprinting
+* HTTP Header Analysis
+* Version Identification
+* Network Service Analysis
+
+This information assists in infrastructure documentation and authorized reconnaissance.
+
+---
+
+# ⚡ Multithreading
+
+The project architecture demonstrates an understanding of concurrent programming techniques that improve scanning performance.
+
+Concepts include:
+
+* Parallel Execution
+* Thread Management
+* Concurrent Network Operations
+* Performance Optimization
+* Resource Utilization
+* Scalable Scanning
+
+These concepts are particularly valuable when scanning large network environments.
+
+---
+
+# 🤖 Security Automation
+
+One of the primary objectives of the project is automating repetitive reconnaissance tasks.
+
+Automation skills demonstrated include:
+
+* Workflow Automation
+* Scan Orchestration
+* Task Scheduling Concepts
+* Data Collection Automation
+* Report Automation
+* Logging Automation
+* Result Processing
+
+Automation reduces manual effort while increasing efficiency and consistency during authorized assessments.
+
+---
+
+# 📊 Report Generation
+
+The framework automatically organizes collected information into multiple report formats, demonstrating experience with structured data processing and documentation.
+
+Report formats include:
+
+* TXT
+* JSON
+* CSV
+* HTML
+
+The reporting engine highlights skills in:
+
+* Data Serialization
+* File Generation
+* Structured Reporting
+* Information Organization
+* Documentation Automation
+
+Professional reporting is an essential aspect of cybersecurity consulting and security operations.
+
+---
+
+# 🐧 Linux Administration
+
+The Network Scanner is designed primarily for Linux environments and demonstrates practical experience working with Linux-based systems.
+
+Relevant skills include:
+
+* Linux Command-Line Usage
+* Package Installation
+* Process Execution
+* File System Management
+* Shell Commands
+* Network Utilities
+* System Configuration
+
+These competencies are widely required in cybersecurity, DevOps, and systems administration roles.
+
+---
+
+# 🛠 Cybersecurity Tool Development
+
+Beyond network scanning, this project demonstrates the ability to design and develop a complete cybersecurity application.
+
+Development skills include:
+
+* Software Architecture
+* Modular Design
+* Security Tool Development
+* Code Organization
+* Project Documentation
+* GitHub Project Management
+* CLI Application Development
+* Error Handling
+* Logging
+* Configuration Management
+
+The project reflects an understanding of professional software engineering practices applied within the cybersecurity domain.
+
+---
+
+# 📈 Additional Technical Competencies
+
+Throughout the development of the Network Scanner, the following complementary skills are also demonstrated:
+
+* Network Reconnaissance
+* Information Gathering
+* Port Scanning
+* Host Discovery
+* Operating System Detection
+* DNS Enumeration
+* Data Parsing
+* JSON Processing
+* CSV Processing
+* HTML Report Generation
+* Logging and Monitoring
+* Python Package Management
+* Performance Optimization
+* Modular Programming
+* Automation Workflows
+* Documentation Writing
+* Version Control with Git
+* Open Source Project Development
+
+These competencies reinforce the project's value as a comprehensive portfolio piece.
+
+---
+
+# 🎯 Professional Skills Demonstrated
+
+In addition to technical expertise, the project reflects several professional engineering skills expected in modern cybersecurity roles.
+
+These include:
+
+* Problem Solving
+* Analytical Thinking
+* Software Design
+* System Architecture
+* Code Maintainability
+* Technical Documentation
+* Project Organization
+* Continuous Improvement
+* Attention to Detail
+* Professional Development Practices
+
+These qualities contribute to the creation of reliable, maintainable, and scalable security tools.
+
+---
+
+# 💼 Career Relevance
+
+The technologies, methodologies, and development practices demonstrated throughout this project closely align with the responsibilities of numerous cybersecurity and IT roles.
+
+This project serves as a valuable portfolio piece for positions such as:
+
+* Penetration Tester
+* Ethical Hacker
+* SOC Analyst
+* Security Analyst
+* Cybersecurity Analyst
+* Security Engineer
+* Network Security Engineer
+* Information Security Engineer
+* Incident Response Analyst
+* Threat Hunter
+* Vulnerability Assessment Consultant
+* Security Automation Engineer
+* DevSecOps Engineer
+* Infrastructure Security Engineer
+* Network Administrator
+* Systems Administrator
+* Cybersecurity Researcher
+* Junior Cybersecurity Consultant
+
+Because the project combines software development, networking, automation, and security concepts into a single application, it demonstrates practical experience that is directly transferable to real-world cybersecurity environments.
+
+---
+
+# 🚀 Why This Project Strengthens a Cybersecurity Portfolio
+
+From a recruiter and hiring manager's perspective, this project highlights the ability to:
+
+* Develop production-style cybersecurity tools using Python.
+* Apply networking fundamentals to practical security problems.
+* Automate repetitive reconnaissance workflows.
+* Build modular and maintainable software architectures.
+* Generate professional reports suitable for security assessments.
+* Work effectively in Linux environments.
+* Integrate industry-standard tools and libraries.
+* Document complex technical projects clearly.
+* Demonstrate both programming and cybersecurity expertise through a single, cohesive application.
+
+These qualities make the project a strong addition to a GitHub portfolio and help showcase practical, job-ready skills beyond theoretical knowledge.
+
+---
+
+# 📚 Summary
+
+The **Network Scanner** project demonstrates a comprehensive blend of **Python programming**, **socket programming**, **TCP/IP networking**, **network security**, **service enumeration**, **DNS analysis**, **banner grabbing**, **multithreading**, **security automation**, **report generation**, **Linux administration**, and **cybersecurity tool development**. Its modular architecture, automated reconnaissance workflow, and professional reporting capabilities reflect real-world engineering practices while showcasing the practical skills expected of modern cybersecurity professionals. As a result, the project serves as a strong portfolio piece for aspiring and experienced practitioners pursuing roles such as **Penetration Tester**, **SOC Analyst**, **Security Engineer**, **Network Security Engineer**, and **Cybersecurity Analyst**.
+
