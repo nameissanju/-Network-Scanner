@@ -3,7 +3,7 @@
 
   # 📌 Overview 
 
-**Network Scanner** is a comprehensive Python-based network reconnaissance and enumeration framework developed to automate the process of discovering network assets, identifying exposed services, and collecting valuable infrastructure information from authorized target systems. The project is designed to streamline the information-gathering phase of penetration testing, security assessments, network audits, and cybersecurity research by integrating multiple scanning techniques into a single, efficient workflow.
+**Network Scanner** is a comprehensive Python-based network reconnaissance and enumeration framework developed to automate the process of discovering network assets, identifying exposed services, and collecting valuable infrastructure information from authorized target systems. The project is designed to streamline the information-gathering phase of penetration testing, security assessments, network audits, and cybersecurity research by integrating multiple scanning techniques into a single, efficient workflow. 
 
 Network reconnaissance is one of the most important stages of any cybersecurity assessment. Before security professionals can identify vulnerabilities, evaluate risks, or test system defenses, they must first understand the structure of the target network, identify active devices, determine which services are exposed, and gather intelligence about the operating environment. Performing these tasks manually often requires running numerous command-line tools, correlating outputs from different sources, and organizing large amounts of data, making the process time-consuming and prone to human error.
 
