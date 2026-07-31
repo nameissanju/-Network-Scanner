@@ -27,7 +27,7 @@ In addition to practical security assessments, the project serves as an educatio
 
 # 🎯 Skills Demonstrated
 
-The **Network Scanner** project showcases practical experience across multiple cybersecurity and software development domains, including:
+The **Network Scanner** project showcases practical experience across multiple cybersecurity and software development domains, including: 
 
 * Network Reconnaissance
 * Network Enumeration
